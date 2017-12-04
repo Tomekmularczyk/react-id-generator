@@ -1,9 +1,11 @@
 import React from 'react'
+import Types from 'prop-types'
 
+let globalPrefix = 'id'
 let lastId = 0
-export default function nextId (prefix = 'id') {
+export default function nextId (prefix) {
   lastId++
-  return `${prefix}${lastId}`
+  return `${prefix || globalPrefix}${lastId}`
 }
 
 /*
@@ -14,9 +16,20 @@ export default function nextId (prefix = 'id') {
 export const ResetHtmlIdGenerator = class extends React.Component {
   componentWillMount () {
     lastId = 0
+    if (this.props.globalPrefix) {
+      globalPrefix = this.props.globalPrefix
+    }
   }
 
   render () {
     return null
   }
+}
+
+ResetHtmlIdGenerator.propTypes = {
+  globalPrefix: Types.string
+}
+
+ResetHtmlIdGenerator.defaultProps = {
+  globalPrefix: null
 }
