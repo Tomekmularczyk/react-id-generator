@@ -1,4 +1,4 @@
-# react-id-generator [![npm][npm-badge]](https://www.npmjs.com/package/react-did-catch) [![travis][build-status]](https://travis-ci.org/Tomekmularczyk/react-did-catch)
+# react-id-generator [![npm][npm-badge]](https://www.npmjs.com/package/react-did-catch)
 
 The motivation for this package is to ease generating unique ids for components (e.g. for accessibility):
 
