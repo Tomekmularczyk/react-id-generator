@@ -25,7 +25,7 @@ class RadioButton extends React.Component {
 }
 ```
 
-Each instance of `RadioButton` will have unique `htmlId` like: *id-0*, *id-1*, *id-2*, *id-3*, *id-4* and so on.
+Each instance of `RadioButton` will have unique `htmlId` like: *id-1*, *id-2*, *id-3*, *id-4* and so on.
 
 Alternatively you can initialize `htmlId` in constructor, however, don't do it in *render()* method because
 `htmlId` will then change on each re-render!
@@ -33,7 +33,7 @@ Alternatively you can initialize `htmlId` in constructor, however, don't do it i
 
 ### What about server-side rendering?
 
-On each server-side rendering `id` will keep increasing while in browser it will start from 0 again
+On each server-side rendering `id` will keep increasing while in browser it will start from 1 again
 ([read more](https://stackoverflow.com/a/45066550/4443323)). That's why it's necessary to reset generator with each server-side rendering. We do this by placing `ResetHtmlIdGenerator` component on root of the components hierarchy:
 
 ```javascript
