@@ -8,20 +8,20 @@ import React from 'react';
 import idGenerator from 'react-id-generator';
 
 class RadioButton extends React.Component {
-componentWillMount() {
-    this.htmlId = idGenerator();
-}
+    componentWillMount() {
+        this.htmlId = idGenerator();
+    }
 
-render() {
-    const { children, ...rest } = this.props;
-    return (
-      <label htmlFor={this.htmlId}>
-        <input id={this.htmlId} type="radio" {...rest} />
-        <div className="fake-radio" />
-        {children}
-      </label>
-);
-}
+    render() {
+        const { children, ...rest } = this.props;
+        return (
+            <label htmlFor={this.htmlId}>
+                <input id={this.htmlId} type="radio" {...rest} />
+                <div className="fake-radio" />
+                {children}
+            </label>
+        );
+    }
 }
 ```
 
@@ -40,17 +40,15 @@ On each server-side rendering `id` will keep increasing while in browser it will
 import { ResetHtmlIdGenerator } from 'react-id-generator';
 
 const store = configureStore();
-function render() {
 ReactDOM.hydrate(
     <Provider store={store}>
       <BrowserRouter>
-     <ResetHtmlIdGenerator />
-...
+        <ResetHtmlIdGenerator />
+        ...
       </BrowserRouter>
     </Provider>,
-document.getElementById('app'),
+    document.getElementById('app'),
 );
-}
 ````
 
 This should keep ids in sync both on server and browser generated markup.
