@@ -1,0 +1,44 @@
+{
+  "name": "react-id-generator",
+  "version": "0.0.1",
+  "description": "Simple helper to generate unique HTML id's both for browser and server.",
+  "repository": "https://github.com/Tomekmularczyk/react-id-generator.git",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prepare": "webpack --config config/dist.config.js",
+    "dev": "webpack --config config/dist.config.js --progress --colors --watch",
+    "lint": "standard --fix"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Tomasz Mularczyk",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "react": "^16.2.0",
+    "standard": "^10.0.3",
+    "webpack": "^3.9.1"
+  },
+  "peerDependencies": {
+    "react": "x.x.x"
+  },
+  "standard": {
+    "ignore": [
+      "lib/*.js"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "env"
+    ]
+  },
+  "dependencies": {}
+}
