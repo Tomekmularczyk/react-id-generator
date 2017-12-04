@@ -1,4 +1,4 @@
-# react-id-generator
+# react-id-generator [![npm][npm-badge]](https://www.npmjs.com/package/react-did-catch) [![travis][build-status]](https://travis-ci.org/Tomekmularczyk/react-did-catch)
 
 The motivation for this package is to ease generating unique ids for components (e.g. for accessibility):
 
@@ -68,3 +68,5 @@ or globally:
 ```
 
 Props go to people that shared their ideas in [this SO topic](https://stackoverflow.com/q/29420835/4443323).
+
+[npm-badge]: https://badge.fury.io/js/react-id-generator.svg
