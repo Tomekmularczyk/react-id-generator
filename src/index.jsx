@@ -1,9 +1,9 @@
 import React from 'react'
 
 let lastId = 0
-export default function nextId () {
-  lastId += 1
-  return `id-${lastId}`
+export default function nextId (prefix = 'id') {
+  lastId++
+  return `${prefix}${lastId}`
 }
 
 /*

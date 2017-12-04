@@ -1,17 +1,58 @@
-###React npm module boilerplate with webpack and babel-preset-env
+# react-id-generator
 
-1. Clone the repo.
-2. Initialize new git repo (`rm -rf .git` and `git init`)
-3. Change _name_, _author_ and _description_ in **package.json** file.
+Motivation for this package is to ease generating unique id's for components (e.g. for accessiblity):
 
-While development it is recommended to make sym-link of this package and use it in test project.
 
-1. Go to root directory and execute `npm link`.
-2. Go to test project and execute `npm link [package name]`.
-3. Now you can import your package as anything else like `import MyComponent from "my-test-package";`.
-4. Go back to your package and start development in watch-mode by `npm run dev`
-5. Now everything you change in **src** will be automatically transpiled by webpack to es5 
-and exported to **lib/index.js** file. Changes will also be reflected in your test project without needing 
-to reinstall packages every time something has changed.
+```javascript
+import React from 'react';
+import idGenerator from 'react-id-generator';
 
-Good luck.
+class RadioButton extends React.Component {
+  componentWillMount() {
+    this.htmlId = idGenerator();
+  }
+
+  render() {
+    const { children, ...rest } = this.props;
+    return (
+      <label htmlFor={this.htmlId}>
+        <input id={this.htmlId} type="radio" {...rest} />
+        <div className="fake-radio" />
+        {children}
+      </label>
+    );
+  }
+}
+```
+
+Each instance of `RadioButton` will have unique `htmlId` like: *id-1*, *id-2*, *id-3*, *id-4* and so on.
+
+Alternatively you can initialize `htmlId` in constructor, however don't do it in *render()* method because
+id will change on each re-render! 
+
+
+### What about server-side rendering?
+
+On each server-side rendering `id` will keep increasing while in browser it will start from 1 again 
+([read more](https://stackoverflow.com/a/45066550/4443323)). Thats why it's neccessary to reset generator on each server-side rendering. We do this by placing `ResetHtmlIdGenerator` component on root of the component hierarchy:
+
+````javascript
+import { ResetHtmlIdGenerator } from 'react-id-generator';
+
+const store = configureStore();
+function render() {
+  ReactDOM.hydrate(
+    <Provider store={store}>
+      <BrowserRouter>
+	    <ResetHtmlIdGenerator />
+        ...
+      </BrowserRouter>
+    </Provider>,
+    document.getElementById('app'),
+  );
+}
+````
+
+This should keep id's in sync both on server and browser generated markup.
+
+Props go to people that shared their ideas in [this SO topic](https://stackoverflow.com/q/29420835/4443323).
