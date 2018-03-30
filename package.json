@@ -19,12 +19,13 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "react": "^16.2.0",
-    "standard": "^10.0.3",
-    "webpack": "^3.9.1"
+    "react": "^16.3.0",
+    "standard": "^11.0.1",
+    "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.13"
   },
   "peerDependencies": {
     "react": "x.x.x"
@@ -41,6 +42,6 @@
     ]
   },
   "dependencies": {
-    "prop-types": "^15.6.0"
+    "prop-types": "^15.6.1"
   }
 }

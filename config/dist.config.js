@@ -2,6 +2,7 @@ const path = require('path')
 const packageName = require('../package.json').name
 
 module.exports = {
+  mode: 'production',
 
   entry: {
     index: './src/index.jsx'
@@ -29,6 +30,10 @@ module.exports = {
         ]
       }
     ]
+  },
+
+  optimization: {
+    minimize: false
   },
 
   resolve: {
