@@ -17,8 +17,8 @@ export const ResetHtmlIdGenerator = class extends React.Component {
   constructor(props) {
     super(props)
     lastId = 0
-    if (this.props.prefix) {
-      globalPrefix = this.props.prefix
+    if (props.prefix) {
+      globalPrefix = props.prefix
     }
   }
 
