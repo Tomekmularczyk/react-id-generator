@@ -3,7 +3,7 @@ import Types from 'prop-types'
 
 let globalPrefix = 'id'
 let lastId = 0
-export default function nextId(localPrefix) {
+export default function nextId (localPrefix) {
   lastId++
   return `${localPrefix || globalPrefix}${lastId}`
 }
@@ -14,7 +14,7 @@ export default function nextId(localPrefix) {
   and cause client-server markup mismatch)
 */
 export const ResetHtmlIdGenerator = class extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     lastId = 0
     if (props.prefix) {
@@ -22,7 +22,7 @@ export const ResetHtmlIdGenerator = class extends React.Component {
     }
   }
 
-  render() {
+  render () {
     return null
   }
 }
