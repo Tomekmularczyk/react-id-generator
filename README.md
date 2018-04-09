@@ -4,18 +4,25 @@ The motivation for this package is to ease generating unique ids for components 
 
 
 ```javascript
-export const ResetHtmlIdGenerator = class extends React.Component {
-  constructor(props) {
-    super(props)
-    lastId = 0
-    if (props.prefix) {
-      globalPrefix = props.prefix
-    }
-  }
+import React from 'react';
+import idGenerator from 'react-id-generator';
 
-  render() {
-    return null
-  }
+class RadioButton extends React.Component {
+    constructor(props) {
+      super(props);
+      this.htmlId = idGenerator();
+    }
+
+    render() {
+      const { children, ...rest } = this.props;
+      return (
+        <label htmlFor={this.htmlId}>
+          <input id={this.htmlId} type="radio" {...rest} />
+            <div className="fake-radio" />
+            {children}
+        </label>
+      );
+    }
 }
 ```
 
