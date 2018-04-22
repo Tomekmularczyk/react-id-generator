@@ -1,5 +1,4 @@
 import React from 'react'
-import Types from 'prop-types'
 
 let globalPrefix = 'id'
 let lastId = 0
@@ -18,6 +17,7 @@ export const ResetHtmlIdGenerator = class extends React.Component {
     super(props)
     lastId = 0
     if (props.prefix) {
+      if (typeof props.prefix !== 'string') throw new Error('prefix should be of string type')
       globalPrefix = props.prefix
     }
   }
@@ -25,12 +25,4 @@ export const ResetHtmlIdGenerator = class extends React.Component {
   render () {
     return null
   }
-}
-
-ResetHtmlIdGenerator.propTypes = {
-  prefix: Types.string
-}
-
-ResetHtmlIdGenerator.defaultProps = {
-  prefix: null
 }
