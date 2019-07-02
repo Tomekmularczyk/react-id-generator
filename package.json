@@ -10,7 +10,8 @@
   "scripts": {
     "prepare": "NODE_ENV=production rollup -c",
     "dev": "rollup -c --watch",
-    "lint": "standard --fix"
+    "lint": "standard --fix",
+    "test": "echo 'no tests yet'"
   },
   "keywords": [
     "id",
