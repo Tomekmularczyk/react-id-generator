@@ -2,8 +2,10 @@ import babel from "rollup-plugin-babel";
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 
+const extensions = [".ts"];
+
 export default {
-  input: "./src/index.js",
+  input: "./src/index.ts",
   output: {
     file: "./lib/index.js",
     format: "cjs",
@@ -11,9 +13,11 @@ export default {
   },
   plugins: [
     babel({
-      exclude: "node_modules/**"
+      exclude: "node_modules/**",
+      extensions,
+      include: ["src/**/*"]
     }),
-    resolve(),
+    resolve({ extensions }),
     commonjs()
   ],
   external: ["react"]

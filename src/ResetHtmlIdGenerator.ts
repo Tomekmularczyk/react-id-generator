@@ -6,8 +6,13 @@ import { resetId, setGlobalPrefix } from "./nextId";
   (otherwise server would keep increasing it with each request
   and cause client-server markup mismatch)
 */
-class ResetHtmlIdGenerator extends React.Component {
-  constructor(props) {
+
+interface Props {
+  prefix?: string;
+}
+
+class ResetHtmlIdGenerator extends React.Component<Props> {
+  constructor(props: Props) {
     super(props);
     resetId();
     if (props.prefix) {
