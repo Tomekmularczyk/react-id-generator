@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
-let globalPrefix = 'id'
-let lastId = 0
-export default function nextId (localPrefix) {
-  lastId++
-  return `${localPrefix || globalPrefix}${lastId}`
+let globalPrefix = "id";
+let lastId = 0;
+export default function nextId(localPrefix) {
+  lastId++;
+  return `${localPrefix || globalPrefix}${lastId}`;
 }
 
 /*
@@ -13,16 +13,17 @@ export default function nextId (localPrefix) {
   and cause client-server markup mismatch)
 */
 export const ResetHtmlIdGenerator = class extends React.Component {
-  constructor (props) {
-    super(props)
-    lastId = 0
+  constructor(props) {
+    super(props);
+    lastId = 0;
     if (props.prefix) {
-      if (typeof props.prefix !== 'string') throw new Error('prefix should be of string type')
-      globalPrefix = props.prefix
+      if (typeof props.prefix !== "string")
+        throw new Error("prefix should be of string type");
+      globalPrefix = props.prefix;
     }
   }
 
-  render () {
-    return null
+  render() {
+    return null;
   }
-}
+};
