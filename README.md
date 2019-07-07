@@ -56,6 +56,9 @@ ReactDOM.hydrate(
 
 This should keep ids in sync both on server and browser generated markup.
 
+See an example for [Nextjs](https://nextjs.org/) app:
+[![Edit react-id-generator-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-id-generator-example-udjzm?fontsize=14)
+
 #### Custom prefixes
 
 You can set custom prefix for each function call like:
