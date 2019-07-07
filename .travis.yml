@@ -3,4 +3,5 @@ node_js:
   - "10"
 script:
   - yarn lint
+  - yarn typecheck
   - yarn test

@@ -11,6 +11,7 @@
     "build": "NODE_ENV=production rollup -c",
     "dev": "rollup -c --watch",
     "lint": "eslint --ext .js,.jsx src/",
+    "typecheck": "tsc",
     "test": "jest"
   },
   "keywords": [
