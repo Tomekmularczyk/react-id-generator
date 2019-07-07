@@ -1,5 +1,4 @@
-# react-id-generator [![npm][npm-badge]](https://www.npmjs.com/package/react-id-generator)
-
+# react-id-generator [![npm][npm-badge]](https://www.npmjs.com/package/react-id-generator) [![Build Status](https://travis-ci.org/Tomekmularczyk/react-id-generator.svg?branch=master)](https://travis-ci.org/Tomekmularczyk/react-id-generator)
 The motivation for this package is to ease generating unique ids for components (e.g. for accessibility):
 
 
