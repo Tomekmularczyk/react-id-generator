@@ -5,13 +5,10 @@ The motivation for this package is to ease generating unique ids for components 
 
 ```javascript
 import React from 'react';
-import idGenerator from 'react-id-generator';
+import nextId from 'react-id-generator';
 
 class RadioButton extends React.Component {
-    constructor(props) {
-      super(props);
-      this.htmlId = idGenerator();
-    }
+    htmlId = nextId();
 
     render() {
       const { children, ...rest } = this.props;
@@ -28,8 +25,7 @@ class RadioButton extends React.Component {
 
 Each instance of `RadioButton` will have unique `htmlId` like: *id-1*, *id-2*, *id-3*, *id-4* and so on.
 
-Alternatively you can initialize `htmlId` in constructor, however, don't do it in *render()* method because
-`htmlId` will then change on each re-render!
+NOTE: Don't initialize `htmlId` in React lifecycle methods like *render()*. `htmlId` should stay the same during component lifetime.
 
 
 ### What about server-side rendering?
@@ -64,7 +60,7 @@ See an example for [Nextjs](https://nextjs.org/) app:
 You can set custom prefix for each function call like:
 
 ```javascript
-this.htmlId = idGenerator('my-prefix');
+this.htmlId = nextId('my-prefix');
 ```
 
 or globally:
