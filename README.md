@@ -1,4 +1,4 @@
-# react-id-generator [![npm][npm-badge]][npm-badge] [![Build Status][build-status]](https://travis-ci.org/Tomekmularczyk/react-id-generator)
+# react-id-generator [![npm][npm-badge]][npm-badge] [![Build Status][build-status]](https://travis-ci.org/Tomekmularczyk/react-id-generator) [![ts][typescript]][typescript]
 
 The motivation for this package is to ease generating unique ids for components (e.g. for accessibility):
 
@@ -73,3 +73,4 @@ Props go to people that shared their ideas in [this SO topic](https://stackoverf
 [npm-badge]: https://badge.fury.io/js/react-id-generator.svg
 [build-status]: https://travis-ci.org/Tomekmularczyk/react-id-generator.svg?branch=master
 [cs-button]: https://codesandbox.io/static/img/play-codesandbox.svg
+[typescript]: https://badges.frapsoft.com/typescript/code/typescript.svg?v=101
