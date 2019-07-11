@@ -1,6 +1,6 @@
 let globalPrefix = "id";
 let lastId = 0;
-export default function nextId(localPrefix: string): string {
+export default function nextId(localPrefix?: string): string {
   lastId++;
   return `${localPrefix || globalPrefix}${lastId}`;
 }

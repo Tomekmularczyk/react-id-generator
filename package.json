@@ -7,11 +7,13 @@
   "files": [
     "lib"
   ],
+  "types": "./lib/index.d.ts",
   "scripts": {
     "build": "NODE_ENV=production rollup -c",
     "dev": "rollup -c --watch",
     "lint": "eslint --ext .js,.jsx src/",
-    "typecheck": "tsc",
+    "typecheck": "tsc --noEmit",
+    "declarations": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
     "test": "jest"
   },
   "keywords": [
