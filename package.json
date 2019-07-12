@@ -11,7 +11,7 @@
   "scripts": {
     "build": "NODE_ENV=production rollup -c",
     "dev": "rollup -c --watch",
-    "lint": "eslint --ext .js,.jsx src/",
+    "lint": "eslint --ext .ts src/",
     "typecheck": "tsc --noEmit",
     "declarations": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
     "test": "jest"
