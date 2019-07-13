@@ -23,7 +23,7 @@
     "id-generator"
   ],
   "author": "Tomasz Mularczyk",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
