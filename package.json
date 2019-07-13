@@ -9,11 +9,11 @@
   ],
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "NODE_ENV=production rollup -c",
     "dev": "rollup -c --watch",
+    "build": "NODE_ENV=production rollup -c",
+    "build:declarations": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
     "lint": "eslint --ext .ts src/",
     "typecheck": "tsc --noEmit",
-    "declarations": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
     "test": "jest"
   },
   "keywords": [
