@@ -1,12 +1,6 @@
 import React from "react";
 import { resetId, setGlobalPrefix } from "./nextId";
 
-/*
-  put it on root of the app to reset id on each app render.
-  (otherwise server would keep increasing it with each request
-  and cause client-server markup mismatch)
-*/
-
 interface Props {
   prefix?: string;
 }
