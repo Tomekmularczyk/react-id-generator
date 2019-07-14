@@ -38,6 +38,7 @@ runTests() {
 
 buildPackage() {
   echo 'Building library...\n'
+  rm -rf lib
   yarn build || exit 1;
   yarn build:declarations || exit 1;
 }
