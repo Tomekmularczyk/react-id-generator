@@ -32,7 +32,6 @@ runTests() {
   echo 'Running tests...\n'
   yarn lint || exit 1;
   yarn typecheck || exit 1;
-  yarn typecheck:example || exit 1;
   yarn test --silent --noStackTrace --colors >/dev/null || exit 1;
   echo '\n'
 }
@@ -107,5 +106,7 @@ buildPackage
 replaceVersionInPackageJSON $NEW_VERSION
 
 commitAndCreateTag $NEW_VERSION
+
+npm publish
 
 pushToRemote

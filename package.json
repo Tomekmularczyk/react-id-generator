@@ -12,9 +12,8 @@
     "dev": "rollup -c --watch | yarn build:declarations --watch",
     "build": "NODE_ENV=production rollup -c",
     "build:declarations": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
-    "lint": "eslint --ext .ts,.tsx src/ example/",
+    "lint": "eslint --ext .ts,.tsx src/",
     "typecheck": "tsc --noEmit",
-    "typecheck:example": "cd example && yarn typecheck",
     "test": "jest"
   },
   "keywords": [
