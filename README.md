@@ -70,6 +70,10 @@ or globally:
 
 Props go to people that shared their ideas in [this SO topic](https://stackoverflow.com/q/29420835/4443323).
 
+### Running example in the repo:
+1. First build the package: `yarn build && yarn build:declarations`
+2. Go to `example/` directory and run `yarn dev`
+
 [npm-badge]: https://badge.fury.io/js/react-id-generator.svg
 [build-status]: https://travis-ci.org/Tomekmularczyk/react-id-generator.svg?branch=master
 [cs-button]: https://codesandbox.io/static/img/play-codesandbox.svg
