@@ -4,11 +4,11 @@ import { setPrefix } from "../../lib";
 
 setPrefix("test-");
 
-export default () => (
+const IndexPage = () => (
   <div>
     <p>
-      Try to refresh page and look to the console - it's clear! <br />
-      No mismatch between id's generated in server and in browser.
+      Try to refresh page and look to the console - it&apos;s clear! <br />
+      No mismatch between id&apos;s generated in server and in browser.
     </p>
     <Input />
     <Input />
@@ -16,3 +16,5 @@ export default () => (
     <Input />
   </div>
 );
+
+export default IndexPage;
