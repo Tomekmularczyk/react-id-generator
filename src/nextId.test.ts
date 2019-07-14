@@ -3,7 +3,7 @@ import nextId, { resetId, setPrefix } from "./nextId";
 describe("nextId", () => {
   beforeEach(() => {
     resetId();
-    setPrefix();
+    setPrefix("id");
   });
 
   test("generates unique id", () => {
