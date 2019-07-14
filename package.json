@@ -39,7 +39,8 @@
     "jest": "^24.8.0",
     "lint-staged": "^9.1.0",
     "prettier": "^1.18.2",
-    "react": "^16.3.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "rollup": "^1.16.6",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.0.1",
@@ -47,7 +48,7 @@
     "typescript": "^3.5.2"
   },
   "peerDependencies": {
-    "react": "x.x.x"
+    "react": ">= 16.8.0"
   },
   "lint-staged": {
     "*.{js,jsx}": [
