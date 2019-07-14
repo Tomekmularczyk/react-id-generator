@@ -1,5 +1,8 @@
 import React from "react";
 import Input from "../components/Input";
+import { setPrefix } from "../../lib";
+
+setPrefix("test-");
 
 export default () => (
   <div>
