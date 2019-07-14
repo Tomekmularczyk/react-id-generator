@@ -9,11 +9,12 @@
   ],
   "types": "./lib/index.d.ts",
   "scripts": {
-    "dev": "rollup -c --watch",
+    "dev": "rollup -c --watch | yarn build:declarations --watch",
     "build": "NODE_ENV=production rollup -c",
     "build:declarations": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
-    "lint": "eslint --ext .ts src/",
+    "lint": "eslint --ext .ts,.tsx src/ example/",
     "typecheck": "tsc --noEmit",
+    "typecheck:example": "cd example && yarn typecheck",
     "test": "jest"
   },
   "keywords": [

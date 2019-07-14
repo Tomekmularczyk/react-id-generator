@@ -4,4 +4,5 @@ node_js:
 script:
   - yarn lint
   - yarn typecheck
+  - yarn typecheck:example
   - yarn test
