@@ -9,6 +9,6 @@ export const resetId = (): void => {
   lastId = 0;
 };
 
-export const setGlobalPrefix = (newPrefix: string = "id"): void => {
+export const setPrefix = (newPrefix: string = "id"): void => {
   globalPrefix = newPrefix;
 };
