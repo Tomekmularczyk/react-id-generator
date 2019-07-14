@@ -1,9 +1,9 @@
-import nextId, { resetId, setGlobalPrefix } from "./nextId";
+import nextId, { resetId, setPrefix } from "./nextId";
 
 describe("nextId", () => {
   beforeEach(() => {
     resetId();
-    setGlobalPrefix();
+    setPrefix();
   });
 
   test("generates unique id", () => {
@@ -20,10 +20,10 @@ describe("nextId", () => {
   });
 
   test("nextId takes global prefix", () => {
-    setGlobalPrefix("test-");
+    setPrefix("test-");
     expect(nextId()).toBe("test-1");
     expect(nextId()).toBe("test-2");
-    setGlobalPrefix("abc@");
+    setPrefix("abc@");
     expect(nextId()).toBe("abc@3");
   });
 
@@ -34,7 +34,7 @@ describe("nextId", () => {
   });
 
   test("nextId takes local prefix over global prefix", () => {
-    setGlobalPrefix("test-");
+    setPrefix("test-");
     expect(nextId()).toBe("test-1");
     expect(nextId("abc@")).toBe("abc@2");
   });
