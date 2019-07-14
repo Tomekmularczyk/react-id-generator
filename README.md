@@ -24,49 +24,69 @@ class RadioButton extends React.Component {
 
 Each instance of `RadioButton` will have unique `htmlId` like: _id-1_, _id-2_, _id-3_, _id-4_ and so on.
 
-NOTE: Don't initialize `htmlId` in React lifecycle methods like _render()_. `htmlId` should stay the same during component lifetime.
+### `nextId`
 
-### What about server-side rendering?
+This is simple function that returns unique id that's incrementing on each call. It can take an argument which will be used as prefix:
 
-On each server-side rendering `id` will keep increasing while in browser it will start from 1 again
-([read more](https://stackoverflow.com/a/45066550/4443323)). That's why it's necessary to reset generator with each server-side rendering. We do this by placing `ResetHtmlIdGenerator` component on root of the components hierarchy:
+```js
+import nextId from "react-id-generator";
 
-```javascript
-import { ResetHtmlIdGenerator } from "react-id-generator";
-
-const store = configureStore();
-ReactDOM.hydrate(
-  <Provider store={store}>
-    <BrowserRouter>
-      <div>
-        <ResetHtmlIdGenerator />
-        ...
-      </div>
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById("app")
-);
+const id1 = nextId(); // id: id-1
+const id2 = nextId('test-id-'); // id: test-id-2
+const id3 = nextId(); // id: id-3
 ```
 
-This should keep ids in sync both on server and browser generated markup.
+NOTE: Don't initialize `htmlId` in React lifecycle methods like _render()_. `htmlId` should stay the same during component lifetime.
+
+### `resetId`
+
+This function will reset the id counter. Main purpose of this function is to avoid warnings thrown by React durring server-side rendering (and also avoid counter exceeding `Number.MAX_SAFE_INTEGER`):
+
+> Warning: Prop `id` did not match. Server: "test-5" Client: "test-1"
+
+While in browser generator will always start from "1", durring SSR we need to manually reset it before generating markup for client:
+
+```javascript
+import { resetId } from "react-id-generator";
+
+server.get("*", (req, res) => {
+  resetId();
+
+  const reactApp = (
+    <ServerLocation url={req.url}>
+      <StyleSheetManager sheet={sheet.instance}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </StyleSheetManager>
+    </ServerLocation>
+  );
+  const html = renderToString(reactApp);
+
+  res.render("index", { html });
+}
+```
+
+This should keep ids in sync both in server and browser generated markup.
+
+### `setPrefix`
+
+You can set prefix globally for every future id that will be generated:
+
+```javascript
+import { setPrefix } from 'react-id-generator';
+
+setPrefix('test-id-');
+
+const id1 = nextId(); // id: test-id-1
+const id2 = nextId(); // id: test-id-2
+const id3 = nextId('local'); // id: local-3 - note that local prefix has precedence
+```
 
 See an example for [Nextjs](https://nextjs.org/) app:
 <br />
 [![Edit react-id-generator-example][cs-button]](https://codesandbox.io/s/react-id-generator-example-udjzm?fontsize=14)
 
-#### Custom prefixes
-
-You can set custom prefix for each function call like:
-
-```javascript
-this.htmlId = nextId("my-prefix");
-```
-
-or globally:
-
-```javascript
-<ResetHtmlIdGenerator prefix="my-prefix" />
-```
 
 Props go to people that shared their ideas in [this SO topic](https://stackoverflow.com/q/29420835/4443323).
 
