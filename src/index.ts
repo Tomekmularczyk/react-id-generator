@@ -1,4 +1,4 @@
-import nextId from "./nextId";
+import nextId, { resetId } from "./nextId";
 import ResetHtmlIdGenerator from "./ResetHtmlIdGenerator";
 
-export { nextId as default, ResetHtmlIdGenerator };
+export { nextId as default, resetId, ResetHtmlIdGenerator };
