@@ -7,5 +7,5 @@
     "jsx": "react"
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/*.test.ts", "lib", "example"]
+  "exclude": ["node_modules", "**/*.test.*", "lib", "example"]
 }

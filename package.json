@@ -9,7 +9,8 @@
   ],
   "types": "./lib/index.d.ts",
   "scripts": {
-    "dev": "rollup -c --watch | yarn build:declarations --watch",
+    "dev": "concurrently \"yarn build:dev --watch\" \"yarn build:declarations --watch\"",
+    "build:dev": "rollup -c",
     "build": "NODE_ENV=production rollup -c",
     "build:declarations": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
     "lint": "eslint --ext .ts,.tsx .",
@@ -34,6 +35,7 @@
     "@types/react-dom": "^16.8.4",
     "@typescript-eslint/eslint-plugin": "^1.11.0",
     "@typescript-eslint/parser": "^1.11.0",
+    "concurrently": "^4.1.1",
     "eslint": "^5.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-react": "^7.0.0",
