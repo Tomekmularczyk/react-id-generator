@@ -20,5 +20,5 @@ export default {
     resolve({ extensions }),
     commonjs()
   ],
-  external: ["react"]
+  external: ["react", "react-dom"]
 };

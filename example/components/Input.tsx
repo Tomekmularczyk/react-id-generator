@@ -1,14 +1,15 @@
 import React from "react";
-import getId from "../../lib";
+import nextId from "../../lib";
 
 class Input extends React.Component {
-  uniqueId = getId();
+  uniqueId = nextId();
 
   render() {
     return (
       <div>
-        <input id={this.uniqueId} defaultValue={this.uniqueId} />
-        <label htmlFor={this.uniqueId}> label for input {this.uniqueId}</label>
+        <label htmlFor={this.uniqueId}>Input with id: {this.uniqueId}</label>
+        <br />
+        <input id={this.uniqueId} placeholder={this.uniqueId} />
       </div>
     );
   }
