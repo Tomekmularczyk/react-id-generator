@@ -2,7 +2,7 @@
 
 The motivation for this package is to ease generating unique ids for components (e.g. for accessibility):
 
-```javascript
+```jsx
 import React from "react";
 import nextId from "react-id-generator";
 
@@ -12,13 +12,31 @@ class RadioButton extends React.Component {
   render() {
     const { children, ...rest } = this.props;
     return (
-      <label htmlFor={this.htmlId}>
+      <div>
+        <label htmlFor={this.htmlId}>
+          {children}
+        </label>
         <input id={this.htmlId} type="radio" {...rest} />
-        <div className="fake-radio" />
-        {children}
-      </label>
+      </div>
     );
   }
+}
+
+// Or with hooks:
+
+import { useId } from "react-id-generator";
+
+const RadioButton = ({ children, ...rest }) => {
+  const [htmlId] = useId();
+
+  return (
+    <div>
+      <label htmlFor={htmlId}>
+        {children}
+      </label>
+      <input id={htmlId} type="radio" {...rest} />
+    </div>
+  )
 }
 ```
 
@@ -37,6 +55,33 @@ const id3 = nextId(); // id: id-3
 ```
 
 NOTE: Don't initialize `htmlId` in React lifecycle methods like _render()_. `htmlId` should stay the same during component lifetime.
+
+### `useId`
+
+This is a hook that will generate id (or id's) which will stay the same across re-renders - it's a function component equivalent of `nextId`. However, with some additional features.
+
+By default it will return an array with single element:
+```jsx
+const idList = useId(); // idList: ["id1"]
+```
+
+but you can specify how many id's it should return:
+```jsx
+const idList = useId(3); // idList: ["id1", "id2", "id3"]
+```
+
+you can also set prefix for them:
+```jsx
+const idList = useId(3, "test"); // idList: ["test1", "test2", "test3"]
+```
+
+and you can generate new id's with dependencies list:
+```jsx
+const Fields = ({ count }) => {
+  const idList = useId(count, null, [count]); // idList will stay the same unless "count" prop changes
+  ...
+}
+```
 
 ### `resetId`
 
