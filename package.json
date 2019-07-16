@@ -55,7 +55,7 @@
     "react": ">= 16.8.0"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{js,ts,tsx}": [
       "prettier --write",
       "git add"
     ]
