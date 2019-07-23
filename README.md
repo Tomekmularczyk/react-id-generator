@@ -1,4 +1,4 @@
-# react-id-generator [![npm][npm-badge]][npm-badge] [![Build Status][build-status]](https://travis-ci.org/Tomekmularczyk/react-id-generator) [![ts][typescript]][typescript]
+# react-id-generator [![npm version][npm-badge]](https://badge.fury.io/js/react-id-generator) [![Build Status][build-status]](https://travis-ci.org/Tomekmularczyk/react-id-generator) [![ts][typescript]][typescript]
 
 The motivation for this package is to ease generating unique ids for components (e.g. for accessibility):
 
