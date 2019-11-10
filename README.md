@@ -70,18 +70,12 @@ but you can specify how many id's it should return:
 const idList = useId(3); // idList: ["id1", "id2", "id3"]
 ```
 
-you can also set prefix for them:
+you can also set a prefix for them:
 ```jsx
 const idList = useId(3, "test"); // idList: ["test1", "test2", "test3"]
 ```
 
-and you can generate new id's with dependencies list:
-```jsx
-const Fields = ({ count }) => {
-  const idList = useId(count, null, [count]); // idList will stay the same unless "count" prop changes
-  ...
-}
-```
+**New id's will be generated only when one of the arguments change.**
 
 ### `resetId`
 
