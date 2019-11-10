@@ -1,5 +1,6 @@
 import React from "react";
 import nextId from "./nextId";
+import inputsAreEqual from "./inputsAreEqual";
 
 const getIds = (count: number, prefix?: string | null) => {
   const ids = [];
@@ -9,13 +10,12 @@ const getIds = (count: number, prefix?: string | null) => {
   return ids;
 };
 
-function useDidUpdate() {
-  const isUpdate = React.useRef(false);
+function usePrevious(value: unknown) {
+  const ref = React.useRef<unknown>();
   React.useEffect(() => {
-    isUpdate.current = true;
-  }, []);
-
-  return isUpdate.current;
+    ref.current = value;
+  });
+  return ref.current;
 }
 
 export default function useId(
@@ -23,14 +23,12 @@ export default function useId(
   prefix?: string | null,
   dependencies: unknown[] = []
 ) {
-  const [idsList, setIdsList] = React.useState(() => getIds(count, prefix));
-  const isUpdate = useDidUpdate();
+  const idsListRef = React.useRef<string[]>();
+  const prevDependencies = usePrevious(dependencies);
 
-  React.useEffect(() => {
-    if (isUpdate) {
-      setIdsList(getIds(count, prefix));
-    }
-  }, dependencies);
+  if (!idsListRef.current || !inputsAreEqual(prevDependencies, dependencies)) {
+    idsListRef.current = getIds(count, prefix);
+  }
 
-  return idsList;
+  return idsListRef.current;
 }

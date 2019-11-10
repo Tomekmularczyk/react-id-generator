@@ -9,7 +9,9 @@
   ],
   "parser": "@typescript-eslint/parser",
   "env": {
-    "jest": true
+    "jest": true,
+    "node": true,
+    "browser": true
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
