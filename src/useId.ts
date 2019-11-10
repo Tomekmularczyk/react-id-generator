@@ -19,7 +19,7 @@ function usePrevious(value: unknown) {
 }
 
 export default function useId(
-  count: number = 1,
+  count = 1,
   prefix?: string | null,
   dependencies: unknown[] = []
 ) {
