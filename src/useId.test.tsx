@@ -61,25 +61,10 @@ describe("useId", () => {
     expect(idList[0]).toBe("test-1");
   });
 
-  it("returns the same id's list across rerenders", () => {
+  it("returns new id's list when count changes", () => {
     let idList: string[] = [];
     const Component = ({ idsCount }: { idsCount: number }) => {
       idList = useId(idsCount);
-      return null;
-    };
-
-    ReactDOM.render(<Component idsCount={1} />, container);
-    ReactDOM.render(<Component idsCount={2} />, container);
-    ReactDOM.render(<Component idsCount={3} />, container);
-
-    expect(idList.length).toBe(1);
-    expect(idList[0]).toBe("id1");
-  });
-
-  it("returns new id's list when dependencies change", () => {
-    let idList: string[] = [];
-    const Component = ({ idsCount }: { idsCount: number }) => {
-      idList = useId(idsCount, null, [idsCount]);
       return null;
     };
 
@@ -104,10 +89,36 @@ describe("useId", () => {
     expect(idList[0]).toBe("id4");
   });
 
+  it("returns new id's list when prefix changes", () => {
+    let idList: string[] = [];
+    const Component = ({ prefix }: { prefix: string }) => {
+      idList = useId(1, prefix);
+      return null;
+    };
+
+    ReactDOM.render(<Component prefix="a-" />, container);
+    expect(idList.length).toBe(1);
+    expect(idList[0]).toBe("a-1");
+
+    ReactDOM.render(<Component prefix="b-" />, container);
+    expect(idList.length).toBe(1);
+    expect(idList[0]).toBe("b-2");
+
+    // nothing had changed
+    ReactDOM.render(<Component prefix="b-" />, container);
+    expect(idList.length).toBe(1);
+    expect(idList[0]).toBe("b-2");
+
+    ReactDOM.render(<Component prefix="c-" />, container);
+
+    expect(idList.length).toBe(1);
+    expect(idList[0]).toBe("c-3");
+  });
+
   it("returns new id's immediately when dependencies change (in the same render)", () => {
     const idsRenderHistory: string[][] = [];
     const Component = ({ idsCount }: { idsCount: number }) => {
-      const ids = useId(idsCount, null, [idsCount]);
+      const ids = useId(idsCount);
       idsRenderHistory.push(ids);
       return null;
     };
