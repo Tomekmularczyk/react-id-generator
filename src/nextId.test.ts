@@ -1,25 +1,18 @@
 import nextId, { resetId, setPrefix } from "./nextId";
 
-describe("nextId", () => {
-  beforeEach(() => {
-    resetId();
-    setPrefix("id");
-  });
+afterEach(() => {
+  resetId();
+  setPrefix("id");
+});
 
-  test("generates unique id", () => {
+describe("nextId", () => {
+  it("generates unique id", () => {
     for (let i = 1; i < 10; i++) {
       expect(nextId()).toBe(`id${i}`);
     }
   });
 
-  test("resetId resets the id", () => {
-    for (let i = 1; i < 10; i++) {
-      resetId();
-      expect(nextId()).toBe("id1");
-    }
-  });
-
-  test("nextId takes global prefix", () => {
+  it("takes global prefix", () => {
     setPrefix("test-");
     expect(nextId()).toBe("test-1");
     expect(nextId()).toBe("test-2");
@@ -27,15 +20,24 @@ describe("nextId", () => {
     expect(nextId()).toBe("abc@3");
   });
 
-  test("nextId takes prefix", () => {
+  it("takes prefix", () => {
     expect(nextId("test-")).toBe("test-1");
     expect(nextId("test-")).toBe("test-2");
     expect(nextId("abc@")).toBe("abc@3");
   });
 
-  test("nextId takes local prefix over global prefix", () => {
+  it("takes local prefix over global prefix", () => {
     setPrefix("test-");
     expect(nextId()).toBe("test-1");
     expect(nextId("abc@")).toBe("abc@2");
+  });
+});
+
+describe("resetId", () => {
+  it("resets the id", () => {
+    for (let i = 1; i < 10; i++) {
+      resetId();
+      expect(nextId()).toBe("id1");
+    }
   });
 });

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { renderIntoDocument, act } from "react-dom/test-utils";
+import { renderIntoDocument } from "react-dom/test-utils";
 import useId from "./useId";
 import { resetId } from "./nextId";
 
@@ -20,7 +20,7 @@ describe("useId", () => {
     }
   });
 
-  test("generates single id with no arguments", () => {
+  it("generates single id with no arguments", () => {
     let idList: string[] = [];
     const Component = () => {
       idList = useId();
@@ -33,7 +33,7 @@ describe("useId", () => {
     expect(idList[0]).toBe("id1");
   });
 
-  test("generates more ids when passing count", () => {
+  it("generates more ids when passing count", () => {
     let idList: string[] = [];
     const Component = () => {
       idList = useId(3);
@@ -48,7 +48,7 @@ describe("useId", () => {
     expect(idList[2]).toBe("id3");
   });
 
-  test("takes prefix", () => {
+  it("takes prefix", () => {
     let idList: string[] = [];
     const Component = () => {
       idList = useId(1, "test-");
@@ -61,58 +61,44 @@ describe("useId", () => {
     expect(idList[0]).toBe("test-1");
   });
 
-  test("returns the same id's list across rerenders", () => {
+  it("returns the same id's list across rerenders", () => {
     let idList: string[] = [];
     const Component = ({ idsCount }: { idsCount: number }) => {
       idList = useId(idsCount);
       return null;
     };
 
-    act(() => {
-      ReactDOM.render(<Component idsCount={1} />, container);
-    });
-    act(() => {
-      ReactDOM.render(<Component idsCount={2} />, container);
-    });
-    act(() => {
-      ReactDOM.render(<Component idsCount={3} />, container);
-    });
+    ReactDOM.render(<Component idsCount={1} />, container);
+    ReactDOM.render(<Component idsCount={2} />, container);
+    ReactDOM.render(<Component idsCount={3} />, container);
 
     expect(idList.length).toBe(1);
     expect(idList[0]).toBe("id1");
   });
 
-  test("returns new id's list when dependencies change", () => {
+  it("returns new id's list when dependencies change", () => {
     let idList: string[] = [];
     const Component = ({ idsCount }: { idsCount: number }) => {
       idList = useId(idsCount, null, [idsCount]);
       return null;
     };
 
-    act(() => {
-      ReactDOM.render(<Component idsCount={1} />, container);
-    });
+    ReactDOM.render(<Component idsCount={1} />, container);
     expect(idList.length).toBe(1);
     expect(idList[0]).toBe("id1");
 
-    act(() => {
-      ReactDOM.render(<Component idsCount={2} />, container);
-    });
+    ReactDOM.render(<Component idsCount={2} />, container);
     expect(idList.length).toBe(2);
     expect(idList[0]).toBe("id2");
     expect(idList[1]).toBe("id3");
 
     // nothing had changed
-    act(() => {
-      ReactDOM.render(<Component idsCount={2} />, container);
-    });
+    ReactDOM.render(<Component idsCount={2} />, container);
     expect(idList.length).toBe(2);
     expect(idList[0]).toBe("id2");
     expect(idList[1]).toBe("id3");
 
-    act(() => {
-      ReactDOM.render(<Component idsCount={1} />, container);
-    });
+    ReactDOM.render(<Component idsCount={1} />, container);
 
     expect(idList.length).toBe(1);
     expect(idList[0]).toBe("id4");
@@ -127,12 +113,10 @@ describe("useId", () => {
     };
 
     ReactDOM.render(<Component idsCount={2} />, container);
-
     expect(idsRenderHistory).toHaveLength(1);
     expect(idsRenderHistory[0]).toEqual(["id1", "id2"]);
 
     ReactDOM.render(<Component idsCount={3} />, container);
-
     expect(idsRenderHistory).toHaveLength(2);
     expect(idsRenderHistory[1]).toEqual(["id3", "id4", "id5"]);
   });
