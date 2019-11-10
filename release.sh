@@ -94,6 +94,8 @@ clear
 
 runTests
 
+buildPackage
+
 printCurrentVersion
 
 NEW_VERSION=$(readNewVersion)
@@ -101,8 +103,6 @@ NEW_VERSION=$(readNewVersion)
 loginToNPM
 
 confirmNewVersion $NEW_VERSION
-
-buildPackage
 
 replaceVersionInPackageJSON $NEW_VERSION
 
