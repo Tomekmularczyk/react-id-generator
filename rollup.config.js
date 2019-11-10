@@ -2,7 +2,7 @@ import babel from "rollup-plugin-babel";
 import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 
-const extensions = [".ts"];
+const extensions = [".ts", ".tsx"];
 
 export default {
   input: "./src/index.ts",
