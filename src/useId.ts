@@ -1,8 +1,7 @@
 import React from "react";
 import nextId from "./nextId";
-import inputsAreEqual from "./inputsAreEqual";
 
-const getIds = (count: number, prefix?: string | null) => {
+const getIds = (count: number, prefix?: string) => {
   const ids = [];
   for (let i = 0; i < count; i++) {
     ids.push(nextId(prefix));
@@ -18,15 +17,12 @@ function usePrevious(value: unknown) {
   return ref.current;
 }
 
-export default function useId(
-  count = 1,
-  prefix?: string | null,
-  dependencies: unknown[] = []
-) {
-  const idsListRef = React.useRef<string[]>();
-  const prevDependencies = usePrevious(dependencies);
+export default function useId(count = 1, prefix?: string): string[] {
+  const idsListRef = React.useRef<string[]>([]);
+  const prevCount = usePrevious(count);
+  const prevPrefix = usePrevious(prefix);
 
-  if (!idsListRef.current || !inputsAreEqual(prevDependencies, dependencies)) {
+  if (count !== prevCount || prevPrefix !== prefix) {
     idsListRef.current = getIds(count, prefix);
   }
 
