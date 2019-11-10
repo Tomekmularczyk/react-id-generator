@@ -102,7 +102,7 @@ describe("useId", () => {
     expect(idList[0]).toBe("id2");
     expect(idList[1]).toBe("id3");
 
-    // nothing changed
+    // nothing had changed
     act(() => {
       ReactDOM.render(<Component idsCount={2} />, container);
     });
@@ -113,7 +113,27 @@ describe("useId", () => {
     act(() => {
       ReactDOM.render(<Component idsCount={1} />, container);
     });
+
     expect(idList.length).toBe(1);
     expect(idList[0]).toBe("id4");
+  });
+
+  it("returns new id's immediately when dependencies change (in the same render)", () => {
+    const idsRenderHistory: string[][] = [];
+    const Component = ({ idsCount }: { idsCount: number }) => {
+      const ids = useId(idsCount, null, [idsCount]);
+      idsRenderHistory.push(ids);
+      return null;
+    };
+
+    ReactDOM.render(<Component idsCount={2} />, container);
+
+    expect(idsRenderHistory).toHaveLength(1);
+    expect(idsRenderHistory[0]).toEqual(["id1", "id2"]);
+
+    ReactDOM.render(<Component idsCount={3} />, container);
+
+    expect(idsRenderHistory).toHaveLength(2);
+    expect(idsRenderHistory[1]).toEqual(["id3", "id4", "id5"]);
   });
 });
