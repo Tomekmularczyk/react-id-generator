@@ -5,11 +5,11 @@
  */
 // eslint-disable-next-line
 module.exports = {
-  webpack: config => {
+  webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      react: require.resolve("react")
+      react: require.resolve("react"),
     };
     return config;
-  }
+  },
 };

@@ -9,16 +9,16 @@ export default {
   output: {
     file: "./lib/index.js",
     format: "cjs",
-    exports: "named"
+    exports: "named",
   },
   plugins: [
     babel({
       exclude: "node_modules/**",
       extensions,
-      include: ["src/**/*"]
+      include: ["src/**/*"],
     }),
     resolve({ extensions }),
-    commonjs()
+    commonjs(),
   ],
-  external: ["react", "react-dom"]
+  external: ["react", "react-dom"],
 };
