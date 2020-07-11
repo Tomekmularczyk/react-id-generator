@@ -5,7 +5,7 @@ import { setPrefix } from "../../lib";
 
 setPrefix("test-");
 
-const IndexPage = () => (
+const IndexPage: React.FC = () => (
   <div>
     <h4>
       Try to refresh page and look to the console - it&apos;s clear! <br />

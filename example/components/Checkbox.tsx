@@ -1,7 +1,7 @@
 import React from "react";
 import { useId } from "../../lib";
 
-const Checkbox = () => {
+const Checkbox: React.FC = () => {
   const [id1] = useId();
   return (
     <div>

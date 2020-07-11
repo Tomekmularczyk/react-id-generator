@@ -4,7 +4,7 @@ import nextId from "../../lib";
 class Input extends React.Component {
   uniqueId = nextId();
 
-  render() {
+  render(): JSX.Element {
     return (
       <div>
         <label htmlFor={this.uniqueId}>Input with id: {this.uniqueId}</label>
