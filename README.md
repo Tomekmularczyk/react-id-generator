@@ -1,6 +1,18 @@
 # react-id-generator [![npm version][npm-badge]][npm-link] [![Build Status][ci-badge]][ci-link] [![ts][ts-badge]][ts-link]
 
-The motivation for this package is to ease generating unique ids for components (e.g. for accessibility):
+Generate ids with React components (e.g. for accessibility).
+
+**Features:**
+
+- Generates unique but predictable id's ✔︎
+- Works with server-side rendering ✔︎
+- TypeScript support ✔︎
+
+See an example with [Next.js](https://nextjs.org/) app:
+<br />
+[![Edit react-id-generator-example][cs-button]](https://codesandbox.io/s/react-id-generator-example-udjzm?fontsize=14)
+
+### Basic example:
 
 ```jsx
 import React from "react";
@@ -121,16 +133,14 @@ const id2 = nextId(); // id: test-id-2
 const id3 = nextId("local"); // id: local-3 - note that local prefix has precedence
 ```
 
-See an example for [Nextjs](https://nextjs.org/) app:
-<br />
-[![Edit react-id-generator-example][cs-button]](https://codesandbox.io/s/react-id-generator-example-udjzm?fontsize=14)
-
-Props go to people that shared their ideas in [this SO topic](https://stackoverflow.com/q/29420835/4443323).
-
 ### Running example in the repo:
 
 1. First build the package: `yarn build && yarn build:declarations`
 2. Go to `example/` directory and run `yarn dev`
+
+<br/>
+
+Props go to people that shared their ideas in [this SO topic](https://stackoverflow.com/q/29420835/4443323).
 
 [npm-badge]: https://badge.fury.io/js/react-id-generator.svg
 [npm-link]: https://badge.fury.io/js/react-id-generator
