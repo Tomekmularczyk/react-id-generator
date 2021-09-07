@@ -1,6 +1,6 @@
 {
   "name": "react-id-generator",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Simple and universal HTML-id generator for React.",
   "repository": "https://github.com/Tomekmularczyk/react-id-generator.git",
   "main": "lib/index.js",
