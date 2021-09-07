@@ -71,7 +71,7 @@ confirmMasterBranch() {
 commitAndCreateTag() {
   local NEW_VERSION=$1
   git add --all
-  git commit -m "chore: Releasing version $NEW_VERSION" || exit 1;
+  git commit -m "chore: release version $NEW_VERSION" || exit 1;
   git tag "v$NEW_VERSION"
 }
 
