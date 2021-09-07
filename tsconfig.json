@@ -5,7 +5,8 @@
     "strict": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "types": []
+    "types": [],
+    "noImplicitAny": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.test.*", "lib", "example"]
