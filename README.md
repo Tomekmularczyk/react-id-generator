@@ -1,6 +1,6 @@
 # react-id-generator [![npm version][npm-badge]][npm-link] [![Build Status][ci-badge]][ci-link] [![ts][ts-badge]][ts-link]
 
-Generate ids with React components (e.g. for accessibility).
+Generate unique id's in React components (e.g. for accessibility).
 
 **Features:**
 
