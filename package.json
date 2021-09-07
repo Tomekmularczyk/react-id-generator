@@ -15,7 +15,8 @@
     "build:declarations": "tsc --declaration --emitDeclarationOnly --declarationDir lib",
     "lint": "eslint --ext .ts,.tsx .",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky install"
   },
   "keywords": [
     "id",
@@ -30,8 +31,8 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
-    "@commitlint/cli": "^9.0.1",
-    "@commitlint/config-conventional": "^9.0.1",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@types/jest": "^26.0.4",
     "@types/react": "^16.9.42",
     "@types/react-dom": "^16.9.8",
@@ -41,10 +42,10 @@
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-react": "^7.20.3",
-    "husky": "^4.2.5",
+    "husky": "^7.0.0",
     "jest": "^26.1.0",
-    "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "rollup": "^2.21.0",
@@ -59,11 +60,5 @@
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint",
     "*.{js,ts,tsx,css,md}": "prettier --write"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
