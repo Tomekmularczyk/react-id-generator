@@ -92,6 +92,8 @@ bailoutIfRepoIsNotClean
 
 clear
 
+loginToNPM
+
 runTests
 
 buildPackage
@@ -99,8 +101,6 @@ buildPackage
 printCurrentVersion
 
 NEW_VERSION=$(readNewVersion)
-
-loginToNPM
 
 confirmNewVersion $NEW_VERSION
 
